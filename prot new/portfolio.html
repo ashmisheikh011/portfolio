@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ashmi's Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,900;1,700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --pink: #f472b6;
+    --hot: #ec4899;
+    --dpink: #db2777;
+    --cream: #faf6f0;
+    --paper: #f5efe4;
+    --ink: #1a1410;
+    --muted: #7a6e63;
+    --border: #e2d9ce;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ─── PAPER TEXTURE ─── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ─── SECTION WRAPPER ─── */
+  .page { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ══════════════════════════════
+     HERO
+  ══════════════════════════════ */
+  .hero {
+    background: var(--paper);
+    border-bottom: 2px solid var(--ink);
+    position: relative;
+    overflow: hidden;
+    min-height: 520px;
+  }
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 2.5rem 0;
+    position: relative;
+  }
+
+  .hero-annotation-top {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    color: var(--ink);
+    opacity: 0.75;
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+    line-height: 1.5;
+  }
+  .hero-annotation-right {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: var(--ink);
+    opacity: 0.65;
+    position: absolute;
+    top: 3.5rem;
+    right: 3rem;
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  .hero-name-wrap {
+    padding-top: 5.5rem;
+    position: relative;
+    z-index: 2;
+    line-height: 0.88;
+  }
+  .hero-name-wrap h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 16vw, 13rem);
+    letter-spacing: 0.02em;
+    color: var(--pink);
+    text-transform: uppercase;
+    line-height: 0.88;
+    position: relative;
+  }
+
+  .hero-photo-wrap {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-30%);
+    z-index: 3;
+    pointer-events: none;
+  }
+  .hero-photo-placeholder {
+    width: 200px;
+    height: 290px;
+    background: var(--ink);
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0.85;
+  }
+  .hero-photo-placeholder span {
+    font-family: 'Caveat', cursive;
+    font-size: 0.85rem;
+    color: var(--cream);
+    opacity: 0.7;
+    text-align: center;
+    padding: 0 1rem;
+    line-height: 1.5;
+  }
+  .hero-photo-placeholder svg { opacity: 0.4; }
+
+  .hero-role-tag {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 2.5rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    z-index: 4;
+  }
+
+  .blob-bg {
+    position: absolute;
+    top: 60px;
+    left: -40px;
+    z-index: 0;
+    opacity: 0.12;
+  }
+
+  /* ══════════════════════════════
+     TWO-COL ABOUT STRIP
+  ══════════════════════════════ */
+  .about-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 2px solid var(--ink);
+  }
+  .about-left {
+    padding: 3rem 2.5rem;
+    border-right: 2px solid var(--ink);
+    position: relative;
+  }
+  .about-left p {
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 340px;
+  }
+  .about-left p strong { color: var(--ink); font-weight: 500; }
+  .about-left .scribble-name {
+    font-family: 'Caveat', cursive;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* polaroid strip */
+  .about-right {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    background: var(--white);
+  }
+  .polaroid {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 8px 8px 24px;
+    box-shadow: 2px 2px 8px rgba(26,20,16,0.07);
+    position: relative;
+  }
+  .polaroid:nth-child(2) { transform: rotate(2deg); }
+  .polaroid:nth-child(3) { transform: rotate(-1.5deg); }
+  .polaroid:nth-child(4) { transform: rotate(1deg); margin-top: -10px; }
+
+  /* ── UPDATED: polaroid-img now handles both img and emoji ── */
+  .polaroid-img {
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .polaroid-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* fallback emoji shown when no img present */
+  .polaroid-img .emoji-fallback {
+    font-size: 1.6rem;
+  }
+
+  .polaroid-label {
+    font-family: 'Caveat', cursive;
+    font-size: 0.75rem;
+    text-align: center;
+    color: var(--muted);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* ══════════════════════════════
+     STORY SECTION
+  ══════════════════════════════ */
+  .story-section {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    border-bottom: 2px solid var(--ink);
+  }
+  .story-left {
+    border-right: 2px solid var(--ink);
+    padding: 2.5rem;
+    background: var(--ink);
+    color: var(--cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .story-left-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 0.5rem;
+  }
+  .story-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+  .story-left h2 em { color: var(--pink); font-style: italic; }
+  .story-left-bottom {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    color: rgba(250,246,240,0.5);
+    line-height: 1.5;
+  }
+  .story-right {
+    padding: 2.5rem 3rem;
+    background: var(--white);
+  }
+  .story-right p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+  }
+  .story-right p strong { color: var(--ink); font-weight: 500; }
+  .highlight-pink {
+    background: var(--pink);
+    color: var(--white);
+    padding: 0 4px;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+
+  /* ══════════════════════════════
+     SKILLS
+  ══════════════════════════════ */
+  .skills-section {
+    border-bottom: 2px solid var(--ink);
+    background: var(--paper);
+  }
+  .skills-header {
+    padding: 2rem 2.5rem 0;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+  }
+  .skills-header .big-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+  }
+  .skills-header .hand-note {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: var(--pink);
+    margin-left: auto;
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: none;
+  }
+  .skill-item {
+    padding: 1.75rem 2rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+  .skill-item:hover { background: var(--white); }
+  .skill-item:nth-child(3n) { border-right: none; }
+  .skill-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--pink);
+    opacity: 0.18;
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    line-height: 1;
+  }
+  .skill-emoji { font-size: 1.4rem; margin-bottom: 0.5rem; display: block; }
+  .skill-name-text {
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+    color: var(--ink);
+  }
+  .skill-sub-text {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 0.75rem;
+  }
+  .stag {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: var(--cream);
+  }
+  .stag.pink { background: #fdf2f8; border-color: #fbcfe8; color: var(--dpink); }
+
+  /* ══════════════════════════════
+     ROLES
+  ══════════════════════════════ */
+  .roles-section {
+    border-bottom: 2px solid var(--ink);
+    background: var(--white);
+  }
+  .roles-header {
+    padding: 2rem 2.5rem;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .roles-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.05em;
+  }
+  .roles-header .subtext {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: var(--pink);
+  }
+  .roles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .role-block {
+    padding: 2.5rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .role-block:nth-child(odd) { border-right: 1px solid var(--border); }
+  .role-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    color: var(--pink);
+    opacity: 0.08;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 1.5rem;
+    line-height: 1;
+  }
+  .role-org-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 0.75rem;
+  }
+  .tag-gdg { background: #e8f5e9; color: #2e7d32; }
+  .tag-ed { background: #fff8e1; color: #f57f17; }
+  .tag-google { background: #e3f2fd; color: #1565c0; }
+  .tag-music { background: #fdf2f8; color: var(--dpink); }
+
+  .role-title-text {
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .role-desc-text {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+  .role-hand {
+    font-family: 'Caveat', cursive;
+    font-size: 0.85rem;
+    color: var(--pink);
+    margin-top: 1rem;
+    display: inline-block;
+  }
+
+  /* ══════════════════════════════
+     QUOTE PANEL
+  ══════════════════════════════ */
+  .quote-panel {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 4rem 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    border-bottom: 2px solid var(--ink);
+  }
+  .quote-big {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .quote-big em { color: var(--pink); font-style: italic; display: block; }
+  .quote-right-text {
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: rgba(250,246,240,0.6);
+    font-weight: 300;
+  }
+  .quote-right-text strong { color: var(--cream); font-weight: 400; }
+  .quote-stat-row {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .qstat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--pink);
+    line-height: 1;
+    display: block;
+  }
+  .qstat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(250,246,240,0.45);
+  }
+
+  /* ══════════════════════════════
+     MUSIC
+  ══════════════════════════════ */
+  .music-section {
+    background: var(--paper);
+    border-bottom: 2px solid var(--ink);
+    padding: 4rem 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+  }
+  .music-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--pink);
+    margin-bottom: 0.75rem;
+  }
+  .music-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .music-title span { color: var(--pink); }
+  .music-body {
+    font-size: 0.92rem;
+    line-height: 1.85;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 440px;
+  }
+  .music-note {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    color: var(--pink);
+    margin-top: 1.5rem;
+    display: block;
+  }
+  .vinyl {
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════
+     WRAP / CONTACT
+  ══════════════════════════════ */
+  .wrap-section {
+    background: var(--white);
+    border-bottom: 2px solid var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .wrap-left {
+    padding: 4rem 2.5rem;
+    border-right: 2px solid var(--ink);
+  }
+  .wrap-and {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: -0.5rem;
+  }
+  .wrap-that {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: -0.5rem;
+  }
+  .wrap-word {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 10vw, 7rem);
+    color: var(--ink);
+    letter-spacing: 0.02em;
+    line-height: 0.9;
+    display: block;
+  }
+  .wrap-sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-top: 1.5rem;
+    max-width: 300px;
+  }
+  .wrap-right {
+    padding: 4rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .contact-letter {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1.5rem;
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.8;
+    transform: rotate(-1deg);
+    box-shadow: 2px 3px 12px rgba(26,20,16,0.07);
+    margin-bottom: 1.5rem;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .contact-link {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--hot); }
+  .contact-link .icon { font-size: 1rem; }
+  .contact-link .lbl { text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.7rem; color: var(--muted); min-width: 60px; }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--pink);
+    color: var(--white);
+    padding: 14px 28px;
+    border: none;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+    width: fit-content;
+  }
+  .cta-btn:hover { background: var(--dpink); transform: translateY(-2px); }
+
+  /* ══════════════════════════════
+     FOOTER
+  ══════════════════════════════ */
+  footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer .f-name {
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    color: var(--pink);
+  }
+  footer .f-copy {
+    font-size: 0.75rem;
+    color: rgba(250,246,240,0.35);
+    letter-spacing: 0.05em;
+  }
+
+  /* ══════════════════════════════
+     ANIMATIONS
+  ══════════════════════════════ */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ══════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════ */
+  @media (max-width: 700px) {
+    .about-strip, .story-section, .wrap-section { grid-template-columns: 1fr; }
+    .about-left { border-right: none; border-bottom: 2px solid var(--ink); }
+    .story-left { border-right: none; border-bottom: 2px solid var(--ink); }
+    .wrap-left { border-right: none; border-bottom: 2px solid var(--ink); }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .roles-grid { grid-template-columns: 1fr; }
+    .role-block:nth-child(odd) { border-right: none; }
+    .quote-panel { grid-template-columns: 1fr; }
+    .music-section { grid-template-columns: 1fr; }
+    .vinyl { display: none; }
+    .hero-photo-wrap { display: none; }
+    .hero-name-wrap h1 { font-size: clamp(4rem, 18vw, 7rem); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     HERO
+═══════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-annotation-top">Hi. Since you're new here.<br/>This is</div>
+    <div class="hero-annotation-right">let me be ya tour guide ↓</div>
+
+    <svg class="blob-bg" width="500" height="400" viewBox="0 0 500 400">
+      <path d="M 60 200 Q 80 20 260 40 Q 460 60 440 200 Q 420 360 240 370 Q 60 380 60 200 Z" fill="#f472b6"/>
+    </svg>
+
+    <div class="hero-name-wrap">
+      <h1>ASHMI</h1>
+      <h1>SHEIKH</h1>
+    </div>
+
+    
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="18" r="10" stroke="#faf6f0" stroke-width="2"/>
+          <path d="M4 44c0-11.046 8.954-20 20-20s20 8.954 20 20" stroke="#faf6f0" stroke-width="2" fill="none"/>
+        </svg>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="hero-role-tag">Graphic Designer / Web Developer / Vocalist</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     ABOUT STRIP
+═══════════════════════════════════ -->
+<section class="about-strip">
+  <div class="about-left fade-up">
+    <p>
+      <strong>A pocket-sized soul with an archive of curiosities and a love for creating.</strong><br/><br/>
+      Pre-final year student who lives at the intersection of doodles and deployment. By the time she hit her teens, she had a sketchbook full of characters and a browser full of design inspiration.<br/><br/>
+      After discovering that <strong>visuals could amplify ideas</strong>, she never looked back. That's when it clicked: people are suckers for pretty visuals.
+    </p>
+    <div class="scribble-name">
+      <svg width="20" height="16" viewBox="0 0 20 16" fill="none"><path d="M2 8 Q 6 2 10 8 Q 14 14 18 8" stroke="#f472b6" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       POLAROIDS — replace src="" with your image paths
+       e.g. src="photos/design.jpg"  or  src="https://..."
+  ═══════════════════════════════════ -->
+  <div class="about-right fade-up">
+
+    <div class="polaroid">
+      <div class="polaroid-img">
+        <!-- Replace src with your photo. Remove the emoji span if you add an image. -->
+        <img src="WhatsApp Image 2026-05-23 at 10.42.22 AM.jpeg" alt="design mode"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <span class="emoji-fallback" style="display:none;">🎨</span>
+      </div>
+      <span class="polaroid-label">design mode</span>
+    </div>
+
+    <div class="polaroid">
+      <div class="polaroid-img">
+        <img src="WhatsApp Image 2026-05-24 at 6.15.05 PM.jpeg" alt="doodling away"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <span class="emoji-fallback" style="display:none;">✏️</span>
+      </div>
+      <span class="polaroid-label">doodling away</span>
+    </div>
+
+    <div class="polaroid">
+      <div class="polaroid-img">
+        <img src="WhatsApp Image 2026-05-24 at 6.18.18 PM.jpeg" alt="building stuff"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <span class="emoji-fallback" style="display:none;">💻</span>
+      </div>
+      <span class="polaroid-label">building stuff</span>
+    </div>
+
+    <div class="polaroid">
+      <div class="polaroid-img">
+        <img src="WhatsApp Image 2026-05-24 at 6.25.40 PM.jpeg" alt="on stage!!"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <span class="emoji-fallback" style="display:none;">🎤</span>
+      </div>
+      <span class="polaroid-label">on stage!!</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     STORY SECTION
+═══════════════════════════════════ -->
+<section class="story-section fade-up">
+  <div class="story-left">
+    <div>
+      <div class="story-left-tag"></div>
+      <h2>Design.<br/>Dev.<br/><em>Music.</em></h2>
+    </div>
+    <div class="story-left-bottom">
+      she doesn't just make things,<br/>she makes them feel right.
+    </div>
+  </div>
+  <div class="story-right">
+    <p>
+      I love content creating and enjoy sharing a taste of my world.
+    <p>
+      My content primarily resonates with the <span class="highlight-pink">creative + tech community</span>. I'm someone who believes that the best work happens at the collision of logic and art.
+    </p>
+    <p>
+      I do: <strong>Graphic design</strong> · <strong>UI/UX design</strong> · <strong>Video editing</strong> · <strong>Social media posts</strong> · <strong>Doodle illustration</strong>
+    </p>
+    <p>
+      I build: <strong>Java</strong> · <strong>Python</strong> · <strong>C</strong> · <strong>Web development</strong> · <strong>DSA (Java)</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     SKILLS
+═══════════════════════════════════ -->
+<section class="skills-section fade-up">
+  <div class="skills-header">
+    <span class="big-label">SKILLS &amp; WORKS</span>
+    <span class="hand-note">what I actually do ✦</span>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-item">
+      <span class="skill-num">01</span>
+      <span class="skill-emoji">🎨</span>
+      <div class="skill-name-text">Graphic Design</div>
+      <div class="skill-sub-text">Brand visuals, event posters, social media assets concept to output.</div>
+      <div class="skill-tags">
+        <span class="stag pink"></span>
+        <span class="stag pink"></span>
+        
+      </div>
+    </div>
+    <div class="skill-item">
+      <span class="skill-num">02</span>
+      <span class="skill-emoji">✏️</span>
+      <div class="skill-name-text">Doodling & Illustration</div>
+      <div class="skill-sub-text">Hand-drawn characters, margin sketches, creative visual storytelling.</div>
+      <div class="skill-tags">
+        <span class="stag">ibisPaint X</span>
+      </div>
+    </div>
+    <div class="skill-item">
+      <span class="skill-num">03</span>
+      <span class="skill-emoji">📐</span>
+      <div class="skill-name-text">UI / UX Design</div>
+      <div class="skill-sub-text">User-centred interfaces, wireframes, prototypes that actually make sense.</div>
+      <div class="skill-tags">
+        <span class="stag pink"></span>
+        <span class="stag"></span>
+        <span class="stag"></span>
+      </div>
+    </div>
+    <div class="skill-item">
+      <span class="skill-num">04</span>
+      <span class="skill-emoji">🌐</span>
+      <div class="skill-name-text">Web Development</div>
+      <div class="skill-sub-text">Responsive, functional websites HTML, CSS, JS and going further.</div>
+      <div class="skill-tags">
+        <span class="stag">HTML/CSS</span>
+        <span class="stag">JavaScript</span>
+        <span class="stag">React</span>
+      </div>
+    </div>
+    <div class="skill-item">
+      <span class="skill-num">05</span>
+      <span class="skill-emoji">☕</span>
+      <div class="skill-name-text">Python & DSA</div>
+      <div class="skill-sub-text">Active deep dive into data structures & algorithms. Logic-first mindset.</div>
+      <div class="skill-tags">
+        <span class="stag">Python</span>
+        <span class="stag">DSA</span>
+        <span class="stag">OOP</span>
+      </div>
+    </div>
+    <div class="skill-item">
+      <span class="skill-num">06</span>
+      <span class="skill-emoji">🐍</span>
+      <div class="skill-name-text">Java & C</div>
+      <div class="skill-sub-text">Scripting, logic building, and foundational programming strength.</div>
+      <div class="skill-tags">
+        <span class="stag">Java</span>
+        <span class="stag">C</span>
+        <span class="stag">Algorithms</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     ROLES
+═══════════════════════════════════ -->
+<section class="roles-section fade-up">
+  <div class="roles-header">
+    <h2>ROLES &amp; RESPONSIBILITIES</h2>
+    <span class="subtext">wearing many hats ✦</span>
+  </div>
+  <div class="roles-grid">
+    <div class="role-block">
+      <span class="role-number">01</span>
+      <span class="role-org-tag tag-gdg">Immersia on Campus</span>
+      <div class="role-title-text">Content Creation Head</div>
+      <div class="role-desc-text">Managing and creating social media content for the College Club. Strategy, design, and community engagement all in one.</div>
+      <span class="role-hand">keeping the community alive ✦</span>
+    </div>
+    <div class="role-block">
+      <span class="role-number">02</span>
+      <span class="role-org-tag tag-gdg">GDG On Campus</span>
+      <div class="role-title-text">Ex-Core Member:- Social Media</div>
+      <div class="role-desc-text">Managing and creating social media content for the Google Developer Group chapter. Strategy, design, and community engagement all in one.</div>
+      <span class="role-hand">keeping the community alive ✦</span>
+    </div>
+    <div class="role-block">
+      <span class="role-number">03</span>
+      <span class="role-org-tag tag-ed">EdCell</span>
+      <div class="role-title-text">Graphic Designer</div>
+      <div class="role-desc-text">Designing creative assets, event collaterals, and visual campaigns for the Entrepreneurship Development Cell. Making ideas look as good as they sound.</div>
+      <span class="role-hand">design with purpose ✦</span>
+    </div>
+    <div class="role-block">
+      <span class="role-number">04</span>
+      <span class="role-org-tag tag-google">Google</span>
+      <div class="role-title-text">Google Student Ambassador</div>
+      <div class="role-desc-text">Representing Google on campus, promoting developer tools, products, and fostering a culture of learning and innovation among students.</div>
+      <span class="role-hand">bridging students & tech ✦</span>
+    </div>
+    <div class="role-block">
+      <span class="role-number">05</span>
+      <span class="role-org-tag tag-music">College Official Band</span>
+      <div class="role-title-text">Female Vocalist</div>
+      <div class="role-desc-text">Performing as the female vocalist in the college's official band. Because creativity doesn't stop at the screen it lives in every frequency.</div>
+      <span class="role-hand">she sings too. yes, really. 🎵</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     QUOTE PANEL
+═══════════════════════════════════ -->
+<section class="quote-panel fade-up">
+  <div>
+    <p class="quote-big">it's not just designing,<br/><em>it's vibing with visuals.</em></p>
+    <div class="quote-stat-row">
+      <div>
+        <span class="qstat-num">5</span>
+        <span class="qstat-label">Active roles</span>
+      </div>
+      <div>
+        <span class="qstat-num">3+</span>
+        <span class="qstat-label">Tech stacks</span>
+      </div>
+      <div>
+        <span class="qstat-num">∞</span>
+        <span class="qstat-label">Doodles made</span>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p class="quote-right-text">
+      My content primarily resonates with the <strong>Gen Z creative + tech audience</strong>. She always appreciates the challenge of making something that feels both technically solid and visually stunning.<br/><br/>
+      How to put her in a box? You can't. She builds things by day, doodles in the margins between, and takes the stage when code gets too loud.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     MUSIC
+═══════════════════════════════════ -->
+<section class="music-section fade-up">
+  <div>
+    <div class="music-eyebrow">Beyond the screen</div>
+    <div class="music-title">SHE<br/><span>SINGS.</span></div>
+    <p class="music-body">
+      As the female vocalist in the college's official band, Ashmi brings the same creative fearlessness to the microphone that she brings to the design canvas. Music isn't a side note it's proof that the best  refuse to be one thing.
+    </p>
+    <span class="music-note">♩ performing with the official college band ♪</span>
+  </div>
+  <svg class="vinyl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="98" fill="#1a1410"/>
+    <circle cx="100" cy="100" r="80" fill="#141010"/>
+    <circle cx="100" cy="100" r="75" fill="none" stroke="#2a2420" stroke-width="1.5"/>
+    <circle cx="100" cy="100" r="65" fill="none" stroke="#2a2420" stroke-width="1"/>
+    <circle cx="100" cy="100" r="55" fill="none" stroke="#2a2420" stroke-width="1.5"/>
+    <circle cx="100" cy="100" r="46" fill="none" stroke="#2a2420" stroke-width="1"/>
+    <circle cx="100" cy="100" r="38" fill="#f472b6"/>
+    <circle cx="100" cy="100" r="6" fill="#1a1410"/>
+    <text x="100" y="93" text-anchor="middle" font-family="'Playfair Display',serif" font-size="7" fill="#fff" font-style="italic">Ashmi</text>
+    <text x="100" y="104" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="5" fill="rgba(255,255,255,0.6)" letter-spacing="2">OFFICIAL BAND</text>
+    <text x="100" y="118" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(255,255,255,0.5)">♩ ♫ ♪</text>
+    <ellipse cx="78" cy="72" rx="14" ry="7" fill="white" opacity="0.04" transform="rotate(-30, 78, 72)"/>
+  </svg>
+</section>
+
+<!-- ═══════════════════════════════════
+     WRAP / CONTACT
+═══════════════════════════════════ -->
+<section class="wrap-section fade-up">
+  <div class="wrap-left">
+    <span class="wrap-and">and</span>
+    <span class="wrap-that">that's</span>
+    <span class="wrap-word">A WRAP.</span>
+    <p class="wrap-sub">
+      Open to design collaborations, dev projects, creative campaigns, and good conversations about pixels and code.
+    </p>
+    <a href="mailto:ashmi@email.com" class="cta-btn">Say hello →</a>
+  </div>
+  <div class="wrap-right">
+    <div class="contact-letter">
+      Thank you so much for taking the time to explore my portfolio ♡
+      It genuinely means a lot to me that my work reached you in some way
+
+      I'm always excited to create, collaborate, and bring thoughtful ideas to life together.
+      If you'd ever like to work with me, I'd absolutely love to connect ⋆ ✩
+      <br/><br/>
+      Thank you again for being here ⭑
+
+      — Ashmi
+    </div>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/ashmi-s-a03844336/" class="contact-link"><span class="icon">💼</span><span class="lbl">LinkedIn</span>https://www.linkedin.com/in/ashmi-s-a03844336/</a>
+      <a href="https://github.com/ashmisheikh011" class="contact-link"><span class="icon">🐙</span><span class="lbl">GitHub</span>https://github.com/ashmisheikh011</a>
+      <a href="csrkl10bashmisheikh@gmail.com" class="contact-link"><span class="icon">✉️</span><span class="lbl">Email</span> csrkl10bashmisheikh@gmail.com</a>
+    </div>
+  </div>
+</section>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
